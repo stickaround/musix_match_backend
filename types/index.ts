@@ -31,3 +31,51 @@ export type ChartingArtistResponse = {
     };
   };
 };
+
+export type MusicGenre = {
+  music_genre: {
+    music_genre_id: number;
+    music_genre_parent_id: number;
+    music_genre_name: string;
+    music_genre_name_extended: string;
+    music_genre_vanity: string;
+  };
+};
+
+export type Album = {
+  album: {
+    album_id: number;
+    album_mid: string;
+    album_name: string;
+    album_rating: number;
+    album_release_date: Date;
+    artist_id: number;
+    artist_name: string;
+    primary_genres: {
+      music_genre_list: MusicGenre[];
+    };
+    album_pline: string;
+    album_copyright: string;
+    album_label: string;
+    restricted: number;
+    updated_time: Date;
+    external_ids: {
+      spotify: string[];
+      itunes: string[];
+      amazon_music: string[];
+    };
+  };
+};
+
+export type AlbumListResponse = {
+  message: {
+    header: {
+      status_code: number;
+      execute_time: number;
+      available: number;
+    };
+    body: {
+      album_list: Album[];
+    };
+  };
+};
