@@ -2,6 +2,7 @@ import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
 
 import { appConfig } from '../config/constants';
+import { MSGs } from '../constants/index';
 
 export const checkAuthentication = async (
   req: Request,
@@ -14,6 +15,6 @@ export const checkAuthentication = async (
     req.user = user;
     next();
   } catch (err) {
-    return res.status(401).json({ message: 'Unauthenticated' });
+    return res.status(401).json({ message: MSGs.UNAUTHENTICATED });
   }
 };
