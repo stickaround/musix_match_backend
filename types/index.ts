@@ -79,3 +79,35 @@ export type AlbumListResponse = {
     };
   };
 };
+
+export type Track = {
+  track: {
+    track_id: number;
+    track_mbid: string;
+    track_length: number;
+    lyrics_id: number;
+    instrumental: number;
+    subtitle_id: number;
+    track_name: string;
+    track_rating: number;
+    album_name: string;
+    album_id: number;
+    artist_id: number;
+    artist_mbid: string;
+    artist_name: string;
+    updated_time: Date;
+  };
+};
+
+export type TrackListResponse = {
+  message: {
+    header: {
+      status_code: number;
+      execute_time: number;
+      available: number;
+    };
+    body: {
+      track_list: Track[];
+    };
+  };
+};
