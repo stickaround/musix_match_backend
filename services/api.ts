@@ -1,7 +1,11 @@
 import axios from 'axios';
 
 import { appConfig } from '../config/constants';
-import { ChartingArtistResponse, AlbumListResponse } from '../types/index';
+import {
+  ChartingArtistResponse,
+  AlbumListResponse,
+  TrackListResponse,
+} from '../types/index';
 
 const api = axios.create({
   baseURL: appConfig.musixMatch.apiUrl,
@@ -16,4 +20,9 @@ export const getChartingArtists = (country) =>
 export const getAlbumList = (artist_id) =>
   api.get<AlbumListResponse>(
     `artist.albums.get?page=1&page_size=3&apikey=${appConfig.musixMatch.apiKey}&artist_id=${artist_id}&s_release_date=desc&g_album_name=1`
+  );
+
+export const getTrackList = (album_id) =>
+  api.get<TrackListResponse>(
+    `album.tracks.get?page=1&page_size=3&apikey=${appConfig.musixMatch.apiKey}&album_id=${album_id}`
   );
