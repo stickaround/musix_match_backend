@@ -38,7 +38,6 @@ const authController = {
       );
       return res.status(200).json({ user, token });
     } catch (err) {
-      console.log(err);
       return res.status(500).json({ message: MSGs.SERVER_ERROR });
     }
   },
@@ -73,6 +72,9 @@ const authController = {
     } catch (err) {
       return res.status(500).json({ message: MSGs.SERVER_ERROR });
     }
+  },
+  getCurrentUser: async (req: Request, res: Response) => {
+    return res.status(200).json(req.user);
   },
 };
 
