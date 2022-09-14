@@ -12,7 +12,7 @@ const cache = apiCache.middleware;
 
 routes.use('/auth', authRoutes);
 routes
-  // .use(cache('20 minutes'))
+  .use(cache('20 minutes'))
   .use(checkAuthentication)
   .use('/artists', artistRoutes)
   .use('/albums', albumRoutes)
